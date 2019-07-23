@@ -13,14 +13,16 @@ Votre seul mission, survivre quel qu'en soit le prix  |
 puts "Quel est le nom de votre héro ?"
 human_name = gets.chomp
 humanplayer1 = HumanPlayer.new(human_name)
-enemies = [enemie1 = Player.new("Josiane") , enemie2 = Player.new("José")]
+enemies = [enemie1 = Player.new("Voldemort") , enemie2 = Player.new("Lucius Malfoy")]
 while humanplayer1.life_points > 0 && (enemie1.life_points > 0 || enemie2.life_points > 0)
+    puts " "
     puts "Voici l'état de chaque combatant : "
     humanplayer1.show_state
     enemie1.show_state
     enemie2.show_state
+    puts " "
     puts "Quelle action veux-tu effectuer ?"
-    puts "a - chercher une meilleur arme"
+    puts "a - chercher une meilleure arme"
     puts "s - chercher à se soigner"
     puts " "
     puts "Attaquer un joueur en vue :"
@@ -36,22 +38,34 @@ while humanplayer1.life_points > 0 && (enemie1.life_points > 0 || enemie2.life_p
     elsif choice_action == "s"
         humanplayer1.search_health_pack
     elsif choice_action == "0"
+        if enemie1.life_points <= 0
+            puts "Tu l'as déjà défoncé, dommage"
+        else
         humanplayer1.attacks(enemie1)
+        end
     elsif choice_action == "1"
+        if enemie2.life_points <= 0
+            puts "Ce petit moldus est déjà KO, dommage"
+        else
         humanplayer1.attacks(enemie2)
+        end
     else 
-        puts "Tu viens de perdre un tour, mamène"
+        puts "Tu viens de perdre un tour, concentre-toi"
         puts " "
     end
-    
-    puts "Au tour de tes ennemies"
+    puts " "
     enemies.each do |enemie|
-        enemie.attacks(humanplayer1)
-        if humanplayer1.life_points <= 0
+        if humanplayer1.life_points <= 0 || enemie.life_points <= 0
             break
+        else
+            puts "Au tour de tes ennemies"
+            enemie.attacks(humanplayer1)
+            end
+            
         end
-    end
 end
+
+
 
 
 

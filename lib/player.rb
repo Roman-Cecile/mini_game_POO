@@ -50,7 +50,7 @@ class HumanPlayer < Player
 
     def show_state
         if @life_points > 0
-            puts "#{@name} a #{@life_points} points de vie et une arme de niveau #{@weapon_level}"
+            puts "#{@name} a #{@life_points} points de vie et une baguette de niveau #{@weapon_level}"
         else
             puts "#{@name} est mort"
         end
@@ -63,12 +63,12 @@ class HumanPlayer < Player
     def search_weapon
         rand_weapon = rand(1..6)
         new_weapon = rand_weapon
-        puts "Tu as trouvé une arme de niveau #{new_weapon}"
+        puts "Tu as trouvé une baguette de niveau #{new_weapon}"
         if new_weapon > @weapon_level
             @weapon_level = new_weapon
-            puts "En voilà une belle nouvelle arme"
+            puts "En voilà une jolie baguette"
         else
-            puts "Jamais vu quelqu'un d'aussi peu chanceux"
+            puts "Jamais vu quelqu'un d'aussi peu chanceux, tu dois être un Weasley"
         end
     end
 
@@ -78,20 +78,20 @@ class HumanPlayer < Player
             when 1
                 puts "cheh !"
             when 2..5
-                @life_points + rand_health
+                @life_points += 50
                 if @life_points <= 100
-                    puts "Bravo, tu as remporté 50HP"
+                    puts "Bravo, la bave de crapaud te rapporte 50 hp"
                 else
                     @life_points = 100
-                    puts "bravo tu as remporté 50HP"
+                    puts "Bravo la bave de crapaud te rapporte 50 hp"
                 end
             else
-                @life_points + rand_health
+                @life_points += 80
                 if @life_points <= 100
-                    puts "Bravo tu as remporté 80HP"
+                    puts "Bravo, le phoenix te soigne et t'offre 80 hp"
                 else
                     @life_points = 100
-                    puts "Bravo, tu as remporté 80HP"
+                    puts "Bravo, le phoenix te soigne et t'offre 80 hp"
                 end
         end
 
