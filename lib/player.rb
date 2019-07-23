@@ -42,10 +42,10 @@ end
 class HumanPlayer < Player
         attr_accessor :weapon_level
     
-        def initialize(get_name)
+        def initialize(name)
             @weapon_level = 1
             @life_points = 100
-            @name = get_name 
+            @name = name 
         end
 
     def show_state
